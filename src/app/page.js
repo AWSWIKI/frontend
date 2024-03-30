@@ -1,18 +1,94 @@
-import { ChakraProvider } from "@chakra-ui/react";
+"use client";
+import "./globals.css";
+import React, { useEffect, useState } from "react";
+import Link from "next/link";
+import Title from "../components/Title/Title";
+import ClassPostItem from "../components/ClassPostItem/ClassPostItem";
 import Header from "../components/Header/Header";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
-import "./globals.css";
+import { useRouter } from "next/navigation";
 
-export default function App({ children }) {
+function ClassPage() {
+  const [classPosts, setClassPosts] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
+  const router = useRouter();
+
+  const fetchPhotosByDate = (date) => {
+    const formattedDate = date.replaceAll("/", "-");
+    fetch(`http://43.201.98.198/photo/date/${formattedDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setClassPosts(
+          data.map((item) => ({
+            ...item,
+            images: [item["이미지"]],
+          }))
+        );
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
+  };
+
+  useEffect(() => {
+    fetch("http://43.201.98.198/photo")
+      .then((response) => response.json())
+      .then((data) => {
+        setClassPosts(
+          data.map((item) => ({
+            ...item,
+            images: [item["이미지"]],
+          }))
+        );
+      })
+      .catch((error) => {
+        console.error("Error fetching data: ", error);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (selectedDate) {
+      fetchPhotosByDate(selectedDate);
+    }
+  }, [selectedDate]);
+
   return (
-    <ChakraProvider>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <Nav />
-        <main className="flex-grow container mx-auto px-4">{children}</main>
-        <Footer />
+    <div>
+      <Header />
+      <Nav />
+      <div className="container mx-auto px-4">
+        <div className="m-4">
+          <div className="flex justify-between items-center mb-4">
+            <Title text="화면 공유" />
+            <div>
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="px-4 py-2 border rounded-lg text-gray-700 leading-tight focus:outline-none focus:shadow-outline mr-4"
+              />
+              <Link href="/class/upload">
+                <button className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
+                  글쓰기
+                </button>
+              </Link>
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            {classPosts.map((post) => (
+              <ClassPostItem
+                key={post.id}
+                date={post.date}
+                images={post.images}
+              />
+            ))}
+          </div>
+        </div>
       </div>
-    </ChakraProvider>
+      <Footer />
+    </div>
   );
 }
+
+export default ClassPage;
