@@ -12,7 +12,7 @@ function NoteDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`http://haproxy/${path}`)
+    fetch(`http://127.0.0.1:10001/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
