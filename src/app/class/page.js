@@ -15,7 +15,7 @@ function ClassPage() {
 
   const fetchPhotosByDate = (date) => {
     const formattedDate = date.replaceAll("/", "-");
-    fetch(`haproxy:1001/photo/date/${formattedDate}`)
+    fetch(`http://haproxy:10001/photo/date/${formattedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(
@@ -31,7 +31,7 @@ function ClassPage() {
   };
 
   useEffect(() => {
-    fetch("http://43.201.98.198/photo")
+    fetch("http://haproxy:10001/photo")
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(

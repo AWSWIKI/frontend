@@ -13,7 +13,7 @@ function JobPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("haproxy:10001/job")
+    fetch("http://haproxy:10001/job")
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));
