@@ -13,7 +13,7 @@ function NotePage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http://haproxy:10001/note")
+    fetch("http://haproxy/note")
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));

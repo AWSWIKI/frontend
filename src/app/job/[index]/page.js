@@ -12,7 +12,7 @@ function JobDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`http://43.201.98.198/${path}`)
+    fetch(`http://haproxy/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
