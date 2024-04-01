@@ -23,14 +23,14 @@ function PostForm() {
     let reqKey = "";
     switch (category) {
       case "screenShare":
-        endpoint = "http://haproxy/photo";
+        endpoint = "http://192.168.56.101:3000/photo";
         break;
       case "certification":
-        endpoint = "http://harpoxy/job";
+        endpoint = "http://192.168.56.101:3000/job";
         reqKey = "JobReqInfo";
         break;
       case "notesShare":
-        endpoint = "http://haproxy/note";
+        endpoint = "http://192.168.56.101:3000/note";
         reqKey = "NoteReqInfo";
         break;
       default:

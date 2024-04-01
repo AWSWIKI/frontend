@@ -13,7 +13,7 @@ function JobPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http:///haproxy/job") // Ensure this URL is correct for your setup
+    fetch("http:///192.168.56.101:3000/job") // Ensure this URL is correct for your setup
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));
