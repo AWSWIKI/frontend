@@ -1,4 +1,3 @@
-"use client";
 import "./globals.css";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -16,7 +15,7 @@ function ClassPage() {
 
   const fetchPhotosByDate = (date) => {
     const formattedDate = date.replaceAll("/", "-");
-    fetch(`http://127.0.0.1:10001/photo/date/${formattedDate}`)
+    fetch(`http://haproxy/photo/date/${formattedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(
@@ -32,7 +31,7 @@ function ClassPage() {
   };
 
   useEffect(() => {
-    fetch("http://127.0.0.1:10001/photo")
+    fetch("http://haproxy/photo")
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(

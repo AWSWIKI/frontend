@@ -1,4 +1,3 @@
-"use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Header from "../../../components/Header/Header";
@@ -12,7 +11,7 @@ function NoteDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`http://127.0.0.1:10001/${path}`)
+    fetch(`http://haproxy/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
