@@ -32,7 +32,7 @@ function ClassPage() {
   };
 
   useEffect(() => {
-    fetch("http://43.201.98.198/photo")
+    fetch("haproxy:10001/photo")
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(
