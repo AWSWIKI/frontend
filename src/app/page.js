@@ -1,3 +1,4 @@
+"use client";
 import "./globals.css";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
@@ -6,10 +7,10 @@ import ClassPostItem from "../components/ClassPostItem/ClassPostItem";
 import Header from "../components/Header/Header";
 import Nav from "../components/Nav/Nav";
 import Footer from "../components/Footer/Footer";
-import { useRouter } from "next/router"; // 수정된 import 문
+import { useRouter } from "next/navigation";
 
-function ClassPage({ initialClassPosts }) {
-  const [classPosts, setClassPosts] = useState(initialClassPosts);
+function ClassPage() {
+  const [classPosts, setClassPosts] = useState([]);
   const [selectedDate, setSelectedDate] = useState("");
   const router = useRouter();
 
@@ -88,15 +89,6 @@ function ClassPage({ initialClassPosts }) {
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  // Fetch data from an external API
-  const res = await fetch("http://haproxy/photo");
-  const initialClassPosts = await res.json();
-
-  // Return props
-  return { props: { initialClassPosts } };
 }
 
 export default ClassPage;

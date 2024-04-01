@@ -1,12 +1,25 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Title from "../../components/Title/Title";
 import PostItem from "../../components/PostItem/PostItem";
 import Header from "../../components/Header/Header";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
+import { useRouter } from "next/navigation"; // Corrected import statement
 
-function NotePage({ notes }) {
+function NotePage() {
+  const [notes, setJobs] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("http://haproxy/note")
+      .then((response) => response.json())
+      .then(setJobs)
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  // Adjusted to use index for routing
   const handlePostClick = (index) => {
     router.push(`/note/${index}`);
   };
@@ -20,6 +33,8 @@ function NotePage({ notes }) {
           <div className="flex justify-between items-center">
             <Title text="필기 공유" />
             <Link href="/note/upload">
+              {" "}
+              {/* Corrected the href */}
               <button className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
                 글쓰기
               </button>
@@ -28,13 +43,13 @@ function NotePage({ notes }) {
           {notes.map((note) => (
             <PostItem
               key={note.id}
-              index={note.index}
+              index={note.index} // Passed index as a prop
               title={note.제목}
               author={note.작성자}
               date={note.날짜}
               content={note.내용}
               image={note.이미지}
-              onClick={() => handlePostClick(note.index)}
+              onClick={() => handlePostClick(note.index)} // Modified to pass index
             />
           ))}
         </div>
@@ -42,15 +57,6 @@ function NotePage({ notes }) {
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  // Fetch data from an external API
-  const res = await fetch("http://haproxy/note");
-  const notes = await res.json();
-
-  // Pass data to the page via props
-  return { props: { notes } };
 }
 
 export default NotePage;

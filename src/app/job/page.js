@@ -1,12 +1,29 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Title from "../../components/Title/Title";
 import PostItem from "../../components/PostItem/PostItem";
 import Header from "../../components/Header/Header";
 import Nav from "../../components/Nav/Nav";
 import Footer from "../../components/Footer/Footer";
+import { useRouter } from "next/navigation"; // Corrected import statement
 
-function JobPage({ jobs }) {
+function JobPage() {
+  const [jobs, setJobs] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    fetch("http:///haproxy/job") // Ensure this URL is correct for your setup
+      .then((response) => response.json())
+      .then(setJobs)
+      .catch((error) => console.error("Error fetching data:", error));
+  }, []);
+
+  const handlePostClick = (id) => {
+    // Assuming `id` is unique and correctly identifies each job
+    router.push(`/job/${id}`);
+  };
+
   return (
     <div>
       <Header />
@@ -22,7 +39,11 @@ function JobPage({ jobs }) {
             </Link>
           </div>
           {jobs.map((job) => (
-            <div key={job.id}>
+            <div
+              key={job.id}
+              onClick={() => handlePostClick(job.id)}
+              className="cursor-pointer"
+            >
               <PostItem
                 title={job.제목}
                 author={job.작성자}
@@ -37,12 +58,6 @@ function JobPage({ jobs }) {
       <Footer />
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  const res = await fetch("http://haproxy/job");
-  const jobs = await res.json();
-  return { props: { jobs } };
 }
 
 export default JobPage;

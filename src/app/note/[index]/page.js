@@ -1,13 +1,24 @@
-import React from "react";
+"use client";
+import { usePathname } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import Header from "../../../components/Header/Header";
 import Nav from "../../../components/Nav/Nav";
 import Footer from "../../../components/Footer/Footer";
 import PostItem from "../../../components/PostItem/PostFullItem";
 
-function NoteDetail({ post }) {
-  if (!post) {
-    return null; // Loading indicator or placeholder can be shown here
-  }
+function NoteDetail() {
+  const [post, setPosts] = useState([]);
+
+  const path = usePathname();
+  console.log(path);
+  useEffect(() => {
+    fetch(`http://haproxy/${path}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setPosts(data);
+      })
+      .catch((error) => console.error("Error fetching data: ", error));
+  }, []);
 
   return (
     <div>
@@ -50,18 +61,4 @@ function NoteDetail({ post }) {
     </div>
   );
 }
-
-export async function getServerSideProps(context) {
-  const { params } = context;
-  const { path } = params;
-  const response = await fetch(`http://haproxy/${path}`);
-  const post = await response.json();
-
-  return {
-    props: {
-      post,
-    },
-  };
-}
-
 export default NoteDetail;
