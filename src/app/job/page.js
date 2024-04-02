@@ -13,7 +13,7 @@ function JobPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http:///192.168.56.101:3000/job") // Ensure this URL is correct for your setup
+    fetch("localhost/api/job") // Ensure this URL is correct for your setup
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));
@@ -33,9 +33,9 @@ function JobPage() {
           <div className="flex justify-between items-center">
             <Title text="취업 / 자격증" />
             <Link href="/job/upload">
-              <a className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
+              <button className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
                 글쓰기
-              </a>
+              </button>
             </Link>
           </div>
           {jobs.map((job) => (
