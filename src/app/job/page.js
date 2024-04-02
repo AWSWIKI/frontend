@@ -21,7 +21,7 @@ function JobPage() {
 
   const handlePostClick = (index) => {
     // Assuming `id` is unique and correctly identifies each job
-    router.push(`/${index}`);
+    router.push(`job/${index}`);
   };
 
   return (
