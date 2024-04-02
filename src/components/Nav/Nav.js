@@ -16,18 +16,20 @@ function Nav() {
     <nav className="bg-white shadow-sm p-4 rounded-md">
       <ul className="flex justify-center list-none m-0">
         <li className="mx-2">
-          <Link href="/class">
-            <button className={getLinkClassName("/class")}>화면공유</button>
+          <Link href="/api/class">
+            <button className={getLinkClassName("/api/class")}>화면공유</button>
           </Link>
         </li>
         <li className="mx-2">
-          <Link href="/job">
-            <button className={getLinkClassName("/job")}>자격증/취업</button>
+          <Link href="/api/job">
+            <button className={getLinkClassName("/api/job")}>
+              자격증/취업
+            </button>
           </Link>
         </li>
         <li className="mx-2">
-          <Link href="/note">
-            <button className={getLinkClassName("/note")}>필기공유</button>
+          <Link href="/api/note">
+            <button className={getLinkClassName("/api/note")}>필기공유</button>
           </Link>
         </li>
       </ul>

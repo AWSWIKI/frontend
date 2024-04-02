@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import Header from "../../../components/Header/Header";
-import Nav from "../../../components/Nav/Nav";
-import Title from "../../../components/Title/Title";
-import PostForm from "../../../components/PostForm/PostForm";
-import Footer from "../../../components/Footer/Footer";
+import Header from "../../../../components/Header/Header";
+import Nav from "../../../../components/Nav/Nav";
+import Title from "../../../../components/Title/Title";
+import PostForm from "../../../../components/PostForm/PostForm";
+import Footer from "../../../../components/Footer/Footer";
 
 function UploadPage() {
   return (

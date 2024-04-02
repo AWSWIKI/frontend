@@ -1,11 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Title from "../../components/Title/Title";
-import PostItem from "../../components/PostItem/PostItem";
-import Header from "../../components/Header/Header";
-import Nav from "../../components/Nav/Nav";
-import Footer from "../../components/Footer/Footer";
+import Title from "../../../components/Title/Title";
+import PostItem from "../../../components/PostItem/PostItem";
+import Header from "../../../components/Header/Header";
+import Nav from "../../../components/Nav/Nav";
+import Footer from "../../../components/Footer/Footer";
 import { useRouter } from "next/navigation"; // Corrected import statement
 
 function JobPage() {
@@ -13,7 +13,7 @@ function JobPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("http:///192.168.56.101:3000/job") // Ensure this URL is correct for your setup
+    fetch("localhost/api/job") // Ensure this URL is correct for your setup
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));
@@ -21,7 +21,7 @@ function JobPage() {
 
   const handlePostClick = (id) => {
     // Assuming `id` is unique and correctly identifies each job
-    router.push(`/job/${id}`);
+    router.push(`/api/job/${id}`);
   };
 
   return (
@@ -32,10 +32,10 @@ function JobPage() {
         <div className="m-4">
           <div className="flex justify-between items-center">
             <Title text="취업 / 자격증" />
-            <Link href="/job/upload">
-              <a className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
+            <Link href="/api/job/upload">
+              <button className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
                 글쓰기
-              </a>
+              </button>
             </Link>
           </div>
           {jobs.map((job) => (

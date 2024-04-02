@@ -2,11 +2,12 @@
 import "./globals.css";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import Title from "../components/Title/Title";
-import ClassPostItem from "../components/ClassPostItem/ClassPostItem";
-import Header from "../components/Header/Header";
-import Nav from "../components/Nav/Nav";
-import Footer from "../components/Footer/Footer";
+
+import Title from "../../components/Title/Title";
+import ClassPostItem from "../../components/ClassPostItem/ClassPostItem";
+import Header from "../../components/Header/Header";
+import Nav from "../../components/Nav/Nav";
+import Footer from "../../components/Footer/Footer";
 import { useRouter } from "next/navigation";
 
 function ClassPage() {
@@ -16,7 +17,7 @@ function ClassPage() {
 
   const fetchPhotosByDate = (date) => {
     const formattedDate = date.replaceAll("/", "-");
-    fetch(`http://192.168.56.101:3000/photo/date/${formattedDate}`)
+    fetch(`localhost/api/photo/date/${formattedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(
@@ -32,7 +33,7 @@ function ClassPage() {
   };
 
   useEffect(() => {
-    fetch("http://192.168.56.101:3000/photo")
+    fetch("localhost/api/photo")
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(

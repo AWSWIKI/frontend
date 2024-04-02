@@ -1,10 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import Header from "../../../components/Header/Header";
-import Nav from "../../../components/Nav/Nav";
-import Footer from "../../../components/Footer/Footer";
-import PostItem from "../../../components/PostItem/PostFullItem";
+import Header from "../../../../components/Header/Header";
+import Nav from "../../../../components/Nav/Nav";
+import Footer from "../../../../components/Footer/Footer";
+import PostItem from "../../../../components/PostItem/PostFullItem";
 
 function JobDetail() {
   const [post, setPosts] = useState([]);
@@ -12,7 +12,7 @@ function JobDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`http://192.168.56.101:3000/${path}`)
+    fetch(`localhost/api/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
