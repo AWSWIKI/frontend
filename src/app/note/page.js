@@ -13,7 +13,7 @@ function NotePage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("api/note")
+    fetch("/api/note")
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));

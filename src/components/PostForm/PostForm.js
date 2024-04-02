@@ -79,6 +79,7 @@ function PostForm() {
       console.error("Error:", error);
       setIsSuccess(false);
       setAlert(`업로드 실패: ${error.message}`);
+      console.log(endpoint);
     }
   };
 

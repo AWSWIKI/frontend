@@ -19,9 +19,9 @@ function JobPage() {
       .catch((error) => console.error("Error fetching data:", error));
   }, []);
 
-  const handlePostClick = (id) => {
+  const handlePostClick = (index) => {
     // Assuming `id` is unique and correctly identifies each job
-    router.push(`/job/${id}`);
+    router.push(`/${index}`);
   };
 
   return (
@@ -33,25 +33,23 @@ function JobPage() {
           <div className="flex justify-between items-center">
             <Title text="취업 / 자격증" />
             <Link href="/job/upload">
+              {" "}
               <button className="px-4 py-2 text-white bg-teal-500 rounded hover:bg-teal-600">
                 글쓰기
               </button>
             </Link>
           </div>
           {jobs.map((job) => (
-            <div
+            <PostItem
               key={job.id}
-              onClick={() => handlePostClick(job.id)}
-              className="cursor-pointer"
-            >
-              <PostItem
-                title={job.제목}
-                author={job.작성자}
-                date={job.날짜}
-                content={job.내용}
-                image={job.이미지}
-              />
-            </div>
+              index={job.index}
+              title={job.제목}
+              author={job.작성자}
+              date={job.날짜}
+              content={job.내용}
+              image={job.이미지}
+              onClick={() => handlePostClick(job.index)}
+            />
           ))}
         </div>
       </div>
