@@ -21,7 +21,7 @@ function Nav() {
           </Link>
         </li>
         <li className="mx-2">
-          <Link href="/">
+          <Link href="/job">
             <button className={getLinkClassName("/job")}>자격증/취업</button>
           </Link>
         </li>
