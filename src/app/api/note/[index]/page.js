@@ -1,10 +1,10 @@
 "use client";
 import { usePathname } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import Header from "../../../components/Header/Header";
-import Nav from "../../../components/Nav/Nav";
-import Footer from "../../../components/Footer/Footer";
-import PostItem from "../../../components/PostItem/PostFullItem";
+import Header from "../../../../components/Header/Header";
+import Nav from "../../../../components/Nav/Nav";
+import Footer from "../../../../components/Footer/Footer";
+import PostItem from "../../../../components/PostItem//PostFullItem";
 
 function NoteDetail() {
   const [post, setPosts] = useState([]);

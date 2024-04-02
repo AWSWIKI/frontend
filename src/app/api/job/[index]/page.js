@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Header from "../../../../components/Header/Header";
 import Nav from "../../../../components/Nav/Nav";
 import Footer from "../../../../components/Footer/Footer";
-import PostItem from "../../../../components/PostItem/PostFullItem";
+import PostItem from "../../../../components/PostItem//PostFullItem";
 
 function JobDetail() {
   const [post, setPosts] = useState([]);
