@@ -13,7 +13,7 @@ function JobPage() {
   const router = useRouter();
 
   useEffect(() => {
-    fetch("api/job") // Ensure this URL is correct for your setup
+    fetch("/api/job") // Ensure this URL is correct for your setup
       .then((response) => response.json())
       .then(setJobs)
       .catch((error) => console.error("Error fetching data:", error));

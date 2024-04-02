@@ -15,7 +15,7 @@ function ClassPage() {
 
   const fetchPhotosByDate = (date) => {
     const formattedDate = date.replaceAll("/", "-");
-    fetch(`api/photo/date/${formattedDate}`)
+    fetch(`/api/photo/date/${formattedDate}`)
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(
@@ -31,7 +31,7 @@ function ClassPage() {
   };
 
   useEffect(() => {
-    fetch("api/photo")
+    fetch("/api/photo")
       .then((response) => response.json())
       .then((data) => {
         setClassPosts(

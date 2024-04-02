@@ -12,7 +12,7 @@ function NoteDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`api/note/${path}`)
+    fetch(`/api/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);
