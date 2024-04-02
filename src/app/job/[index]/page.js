@@ -12,7 +12,7 @@ function JobDetail() {
   const path = usePathname();
   console.log(path);
   useEffect(() => {
-    fetch(`localhost/api/${path}`)
+    fetch(`api/${path}`)
       .then((response) => response.json())
       .then((data) => {
         setPosts(data);

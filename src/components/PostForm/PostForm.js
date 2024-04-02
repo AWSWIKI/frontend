@@ -23,14 +23,14 @@ function PostForm() {
     let reqKey = "";
     switch (category) {
       case "screenShare":
-        endpoint = "localhost/api/photo";
+        endpoint = "api/photo";
         break;
       case "certification":
-        endpoint = "localhost/api/job";
+        endpoint = "api/job";
         reqKey = "JobReqInfo";
         break;
       case "notesShare":
-        endpoint = "localhost/api/note";
+        endpoint = "api/note";
         reqKey = "NoteReqInfo";
         break;
       default:
