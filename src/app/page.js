@@ -55,6 +55,7 @@ function ClassPage() {
 
   return (
     <div>
+      <div>Current Host: {process.env.HOST_NAME}</div>;
       <Header />
       <Nav />
       <div className="container mx-auto px-4">

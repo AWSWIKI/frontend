@@ -10,7 +10,7 @@ function Footer() {
         w-full
       "
     >
-      <p>© 2024 게시판. 모든 권리 보유.</p>
+      <p>© 2024 Team6. All rights reserved. </p>
     </footer>
   );
 }
