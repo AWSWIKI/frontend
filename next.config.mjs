@@ -1,10 +1,20 @@
 // next.config.mjs
 
+
+logging: {
+  fetches: {
+    fullUrl: true,
+  },
+},
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "standalone",
-  env: {
-    HOST_NAME: process.env.HOST_NAME,
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
   },
 };
 
